@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -42,6 +43,6 @@ typedef struct instruction_s
 typedef void (*function_pointer)(stack_t **, unsigned int);
 
 
-function_pointer find_app_func(char *opcode);
+function_pointer find_app_func(char *opcode, int line_no);
 
 #endif /*MONTY_H*/
