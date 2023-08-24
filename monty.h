@@ -22,6 +22,13 @@ typedef struct stack_s
 } stack_t;
 
 /**
+*function_pointer - Created a typedef for the function pointer
+*
+*Description: Typedef a function pointer
+*/
+typedef void (*function_pointer)(stack_t **, unsigned int, char *temp);
+
+/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -32,19 +39,12 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	function_pointer f;
 } instruction_t;
-
-/**
-*f - Created a typedef for the function pointer
-*
-*Description: Typedef a function pointer
-*/
-typedef void (*function_pointer)(stack_t **, unsigned int);
 
 
 function_pointer find_app_func(char *opcode, int line_no);
-void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number);
-void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number, char *temp);
+void push(stack_t **stack, unsigned int line_number, char *temp);
 
 #endif /*MONTY_H*/

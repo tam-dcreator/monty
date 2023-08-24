@@ -14,14 +14,14 @@ function_pointer find_app_func(char *opcode, int line_no)
 
 	/*Create an array of struture of type instruction_t*/
 	instruction_t func_x[] = {
-		{"pall", pall},
 		{"push", push},
+		{"pall", pall},
 		{"0", NULL},
 	};
 	/*Iterate through the array to get the desired function and return it*/
 	for (i = 0; strcmp(func_x[i].opcode, "0") != 0; i++)
 	{
-		if (strcmp(opcode, func_x[i].opcode))
+		if (strcmp(opcode, func_x[i].opcode) == 0)
 			return (func_x[i].f);
 	}
 	fprintf(stderr, "L<%d>: unknown instruction <%s>\n",

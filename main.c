@@ -9,7 +9,7 @@
 int main(int ac, char *argv[])
 {
 	FILE *file;
-	stack_t *stk;
+	stack_t *stk = NULL;
 	char *token, *lineptr = NULL, *filename = argv[1];
 	function_pointer fp;
 	int line_no = 0;
@@ -37,12 +37,10 @@ int main(int ac, char *argv[])
 			/*tokenize lineptr and find the corresponding func*/
 			token = strtok(lineptr, " \n");
 			fp = find_app_func(token, line_no);
-			token = strtok(NULL, " \n");
+			if(strcmp("pall", token) != 0)
+				token = strtok(NULL, " \n");
 			/*Call the function passing the variables*/
-			if (token != NULL)
-				fp(&stk, atoi(token));
-			else
-				fp(&stk, 0);
+			fp(&stk, line_no, token);
 		}
 	}
 	free(lineptr);
