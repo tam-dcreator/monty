@@ -2,7 +2,7 @@
 #define MONTY_H
 
 #include <stdio.h>
-#include <strings.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -33,5 +33,15 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+*f - Created a typedef for the function pointer
+*
+*Description: Typedef a function pointer
+*/
+typedef void (*function_pointer)(stack_t **, unsigned int);
+
+
+function_pointer find_app_func(char *opcode);
 
 #endif /*MONTY_H*/
