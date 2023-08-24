@@ -4,10 +4,11 @@
 *functions.
 *
 *@opcode: Key word used to check for the desired function
+*@line_no: Current line no.
 *
 *Return: The appropriate function or NULL
 */
-function_pointer find_app_func(char *opcode)
+function_pointer find_app_func(char *opcode, int line_no)
 {
 	int i;
 
@@ -28,4 +29,7 @@ function_pointer find_app_func(char *opcode)
 		if (strcmp(opcode, func_x[i].opcode))
 			return (func_x[i].f);
 	}
+	fprintf(stderr, "L<%d>: unknown instruction <%s>\n",
+		line_no, opcode);
+	exit(EXIT_FAILURE);
 }
