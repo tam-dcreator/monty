@@ -6,9 +6,9 @@
 *
 *Return: On success 0.
 */
+FILE *file;
 int main(int ac, char *argv[])
 {
-	FILE *file;
 	stack_t *stk = NULL;
 	char *token, *lineptr = NULL, *filename = argv[1];
 	function_pointer fp;
@@ -23,7 +23,7 @@ int main(int ac, char *argv[])
 	}
 	file = fopen(filename, "r");
 	if (file == NULL)
-		fprintf(stderr, "Can't open file <%s>\n", filename),
+		fprintf(stderr, "Can't open file %s\n", filename),
 			exit(EXIT_FAILURE);
 	/*Read lines from the open file*/
 	while ((read = getline(&lineptr, &len, file)) != -1)
@@ -37,7 +37,7 @@ int main(int ac, char *argv[])
 			/*tokenize lineptr and find the corresponding func*/
 			token = strtok(lineptr, " \n");
 			fp = find_app_func(token, line_no);
-			if(strcmp("pall", token) != 0)
+			if (strcmp("pall", token) != 0)
 				token = strtok(NULL, " \n");
 			/*Call the function passing the variables*/
 			fp(&stk, line_no, token);

@@ -10,7 +10,11 @@ void push(stack_t **stack, unsigned int line_number, char *temp)
 {
 	stack_t *newnode = malloc(sizeof(stack_t));
 
-	(void)line_number;
+	if (temp == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fclose(file), exit(EXIT_FAILURE);
+	}
 
 	if (newnode == NULL)
 		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
@@ -18,11 +22,10 @@ void push(stack_t **stack, unsigned int line_number, char *temp)
 	newnode->next = NULL;
 	newnode->prev = NULL;
 
-	if(*stack)
+	if (*stack)
 	{
 		newnode->next = *stack;
 		(*stack)->prev = newnode;
-		*stack = newnode;
 	}
 	*stack = newnode;
 }

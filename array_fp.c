@@ -24,7 +24,8 @@ function_pointer find_app_func(char *opcode, int line_no)
 		if (strcmp(opcode, func_x[i].opcode) == 0)
 			return (func_x[i].f);
 	}
-	fprintf(stderr, "L<%d>: unknown instruction <%s>\n",
+	fprintf(stderr, "L%d: unknown instruction %s\n",
 		line_no, opcode);
+	fclose(file);
 	exit(EXIT_FAILURE);
 }
