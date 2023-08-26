@@ -8,7 +8,7 @@
 */
 void push(stack_t **stack, unsigned int line_number, char *temp)
 {
-	stack_t *newnode = malloc(sizeof(stack_t));
+	stack_t *newnode;
 
 	if (temp == NULL)
 	{
@@ -16,6 +16,7 @@ void push(stack_t **stack, unsigned int line_number, char *temp)
 		fclose(file), exit(EXIT_FAILURE);
 	}
 
+	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
 	newnode->n = atoi(temp);
