@@ -1,9 +1,13 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+extern FILE *file;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -41,8 +45,6 @@ typedef struct instruction_s
 	char *opcode;
 	function_pointer f;
 } instruction_t;
-
-extern FILE *file;
 
 function_pointer find_app_func(char *opcode, int line_no);
 void pall(stack_t **stack, unsigned int line_number, char *temp);

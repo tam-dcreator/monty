@@ -1,4 +1,7 @@
 #include "monty.h"
+
+FILE *file;/*Global variable*/
+
 /**
 *main - Entry function
 *@ac: Argument count
@@ -6,15 +9,13 @@
 *
 *Return: On success 0.
 */
-FILE *file;
 int main(int ac, char *argv[])
 {
 	stack_t *stk = NULL;
 	char *token, *lineptr = NULL, *filename = argv[1];
 	function_pointer fp;
 	int line_no = 0;
-	size_t len = 0;
-	ssize_t read;
+	size_t len = 0, read, flag = -1;
 
 	if (ac != 2)
 	{
@@ -26,7 +27,7 @@ int main(int ac, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", filename),
 			exit(EXIT_FAILURE);
 	/*Read lines from the open file*/
-	while ((read = getline(&lineptr, &len, file)) != -1)
+	while ((read = getline(&lineptr, &len, file)) != flag)
 	{
 		line_no++;
 		/*Check if a blank line was encountered*/
