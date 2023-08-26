@@ -47,5 +47,6 @@ extern FILE *file;
 function_pointer find_app_func(char *opcode, int line_no);
 void pall(stack_t **stack, unsigned int line_number, char *temp);
 void push(stack_t **stack, unsigned int line_number, char *temp);
+void free_stack(stack_t **stack);
 
 #endif /*MONTY_H*/

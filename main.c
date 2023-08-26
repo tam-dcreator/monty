@@ -45,5 +45,6 @@ int main(int ac, char *argv[])
 	}
 	free(lineptr);
 	fclose(file);
+	free_stack(&stk);
 	return (0);
 }
