@@ -4,11 +4,11 @@
 *@stack: The stack that needs to be free
 *
 */
-void free_stack(char **stack)
+void free_stack(stack_t **stack)
 {
 	stack_t *temp = *stack;
 
-	while(temp)
+	while (temp)
 	{
 		temp = temp->prev;
 		free(*stack);
