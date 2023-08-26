@@ -23,7 +23,7 @@ int main(int ac, char *argv[])
 	}
 	file = fopen(filename, "r");
 	if (file == NULL)
-		fprintf(stderr, "Can't open file %s\n", filename),
+		fprintf(stderr, "Error: Can't open file %s\n", filename),
 			exit(EXIT_FAILURE);
 	/*Read lines from the open file*/
 	while ((read = getline(&lineptr, &len, file)) != -1)

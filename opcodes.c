@@ -24,8 +24,8 @@ void push(stack_t **stack, unsigned int line_number, char *temp)
 
 	if (*stack)
 	{
-		newnode->next = *stack;
-		(*stack)->prev = newnode;
+		newnode->prev = *stack;
+		(*stack)->next = newnode;
 	}
 	*stack = newnode;
 }
@@ -47,6 +47,6 @@ void pall(stack_t **stack, unsigned int line_number, char *temp)
 	while (pointer != NULL)
 	{
 		printf("%d\n", pointer->n);
-		pointer = pointer->next;
+		pointer = pointer->prev;
 	}
 }
