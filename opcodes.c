@@ -14,7 +14,7 @@ void push(stack_t **stack, unsigned int line_number, char *temp, char *p)
 	if (temp == NULL || !(is_int(temp)))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		fclose(file), free(p), exit(EXIT_FAILURE);
+		fclose(file), free(p), free_stack(stack), exit(EXIT_FAILURE);
 	}
 
 	newnode = malloc(sizeof(stack_t));
