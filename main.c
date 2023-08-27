@@ -37,11 +37,14 @@ int main(int ac, char *argv[])
 		{
 			/*tokenize lineptr and find the corresponding func*/
 			token = strtok(lineptr, " \n");
-			fp = find_app_func(token, line_no);
-			if (strcmp("pall", token) != 0)
-				token = strtok(NULL, " \n");
+			if (token)
+			{
+				fp = find_app_func(token, line_no);
+				if (strcmp("pall", token) != 0)
+					token = strtok(NULL, " \n");
 			/*Call the function passing the variables*/
-			fp(&stk, line_no, token, lineptr);
+				fp(&stk, line_no, token, lineptr);
+			}
 		}
 	}
 	free(lineptr);
