@@ -32,3 +32,23 @@ void clean(stack_t **stack, FILE *file, char *p)
 	fclose(file), free_stack(stack), free(p);
 	exit(EXIT_FAILURE);
 }
+
+/**
+*stk_len - Function that calculates the length of the stack
+*@stack: The stack
+*
+*Return: Length of the stack.
+*/
+int stk_len(stack_t **stack)
+{
+	stack_t *temp = *stack;
+	int count = 0;
+
+	while (temp)
+	{
+		count++;
+		temp = temp->prev;
+	}
+	printf("%d\n", count);
+	return (count);
+}
