@@ -73,7 +73,7 @@ void pint(stack_t **stack, unsigned int line_number, char *temp, char *p)
 		printf("%d\n", (*stack)->n);
 	else
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		clean(stack, file, p);
 	}
 }
