@@ -34,7 +34,7 @@ int main(int ac, char *argv[])
 		{
 			/*tokenize lineptr and find the corresponding func*/
 			token = strtok(lineptr, " \n");
-			if (strcmp("nop", token) == 0)
+			if ((strcmp("nop", token) == 0) || token[0] == '#')
 				continue;
 			else if (token)
 			{
