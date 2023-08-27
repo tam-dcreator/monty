@@ -55,7 +55,7 @@ void sub(stack_t **stack, unsigned int line_number, char *temp, char *p)
 		pointer_a = *stack;
 		pointer_b = (*stack)->prev;
 		temp_n = pointer_b->n;
-		pointer_b->n = abs((pointer_a->n) - temp_n);
+		pointer_b->n = temp_n - (pointer_a->n);
 		*stack = pointer_b;
 		free(pointer_a);
 	}
