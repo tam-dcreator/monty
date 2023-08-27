@@ -102,3 +102,32 @@ void pop(stack_t **stack, unsigned int line_number, char *temp, char *p)
 		clean(stack, file, p);
 	}
 }
+
+/**
+*swap - Function that removes the top element of the stack.
+*@stack: Stack data would be stored in
+*@line_number: Integer to be added
+*@temp: Tokenized input
+*@p: Lineptr var, sent for freeing incase of an error and the program exits
+*/
+void swap(stack_t **stack, unsigned int line_number, char *temp, char *p)
+{
+	stack_t *pointer_a, *pointer_b;
+	int temp_n;
+
+	(void)temp;
+
+	if (stk_len(stack) >= 2)
+	{
+		pointer_a = *stack;
+		pointer_b = (*stack)->prev;
+		temp_n = pointer_a->n;
+		pointer_a->n = pointer_b->n;
+		pointer_b->n = temp_n;
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		clean(stack, file, p);
+	}
+}

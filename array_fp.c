@@ -21,6 +21,7 @@ function_pointer find_app_func(stack_t **stk, char *opcode, int line_no,
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{"0", NULL},
 	};
 	/*Iterate through the array to get the desired function and return it*/

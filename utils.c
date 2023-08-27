@@ -49,6 +49,5 @@ int stk_len(stack_t **stack)
 		count++;
 		temp = temp->prev;
 	}
-	printf("%d\n", count);
 	return (count);
 }
