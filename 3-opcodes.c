@@ -16,12 +16,12 @@ void pchar(stack_t **stack, unsigned int line_number, char *temp, char *p)
 
 	if (*stack)
 	{
-		if (temp > 127 || temp < 0)
+		if (temp_n > 127 || temp_n < 0)
 		{
 			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 			clean(stack, file, p);
 		}
-		putchar(temp);
+		printf("%c\n", temp_n);
 	}
 	else
 	{
