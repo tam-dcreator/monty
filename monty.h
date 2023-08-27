@@ -54,6 +54,7 @@ void pint(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void pop(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void swap(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void add(stack_t **stack, unsigned int line_number, char *temp, char *p);
+void sub(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void free_stack(stack_t **stack);
 bool is_int(char *temp);
 void clean(stack_t **stack, FILE *file, char *p);
