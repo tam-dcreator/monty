@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 extern FILE *file;
 
@@ -30,7 +31,7 @@ typedef struct stack_s
 *
 *Description: Typedef a function pointer
 */
-typedef void (*function_pointer)(stack_t **, unsigned int, char *temp);
+typedef void (*function_pointer)(stack_t **, unsigned int, char *tmp, char *p);
 
 /**
  * struct instruction_s - opcode and its function
@@ -47,8 +48,9 @@ typedef struct instruction_s
 } instruction_t;
 
 function_pointer find_app_func(char *opcode, int line_no);
-void pall(stack_t **stack, unsigned int line_number, char *temp);
-void push(stack_t **stack, unsigned int line_number, char *temp);
+void pall(stack_t **stack, unsigned int line_number, char *temp, char *p);
+void push(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void free_stack(stack_t **stack);
+bool is_int(char *temp);
 
 #endif /*MONTY_H*/

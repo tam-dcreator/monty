@@ -41,7 +41,7 @@ int main(int ac, char *argv[])
 			if (strcmp("pall", token) != 0)
 				token = strtok(NULL, " \n");
 			/*Call the function passing the variables*/
-			fp(&stk, line_no, token);
+			fp(&stk, line_no, token, lineptr);
 		}
 	}
 	free(lineptr);
