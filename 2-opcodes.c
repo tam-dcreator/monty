@@ -83,15 +83,15 @@ void divide(stack_t **stack, unsigned int line_number, char *temp, char *p)
 
 	(void)temp;
 
-	if ((*stack)->n == 0)
-	{
-		fprintf(stderr, "L%d: division by zero\n", line_number);
-		clean(stack, file, p);
-	}
 	if (stk_len(stack) >= 2)
 	{
 		pointer_a = *stack;
 		pointer_b = (*stack)->prev;
+		if (pointer_a->n == 0)
+		{
+			fprintf(stderr, "L%d: division by zero\n", line_number);
+			clean(stack, file, p);
+		}
 		temp_n = pointer_b->n;
 		pointer_b->n = temp_n / (pointer_a->n);
 		*stack = pointer_b;
