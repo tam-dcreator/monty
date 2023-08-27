@@ -10,12 +10,13 @@
 */
 void pchar(stack_t **stack, unsigned int line_number, char *temp, char *p)
 {
-	int temp_n = (*stack)->n;
+	int temp_n;
 
 	(void)temp;
 
 	if (*stack)
 	{
+		temp_n = (*stack)->n;
 		if (temp_n > 127 || temp_n < 0)
 		{
 			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
