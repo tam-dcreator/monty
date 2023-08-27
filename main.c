@@ -18,10 +18,7 @@ int main(int ac, char *argv[])
 	size_t len = 0, read, flag = -1;
 
 	if (ac != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
 	file = fopen(filename, "r");
 	if (file == NULL)
 		fprintf(stderr, "Error: Can't open file %s\n", filename),
@@ -37,7 +34,9 @@ int main(int ac, char *argv[])
 		{
 			/*tokenize lineptr and find the corresponding func*/
 			token = strtok(lineptr, " \n");
-			if (token)
+			if (strcmp("nop", token) == 0)
+				continue;
+			else if (token)
 			{
 				fp = find_app_func(&stk, token, line_no, lineptr);
 				if (strcmp("push", token) == 0)
