@@ -14,12 +14,13 @@ void push(stack_t **stack, unsigned int line_number, char *temp, char *p)
 	if (temp == NULL || !(is_int(temp)))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		fclose(file), free(p), free_stack(stack), exit(EXIT_FAILURE);
+		clean(stack, file, p);
 	}
 
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
-		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: malloc failed\n"),
+			clean(stack, file, p);
 	newnode->n = atoi(temp);
 	newnode->next = NULL;
 	newnode->prev = NULL;
@@ -58,23 +59,21 @@ void pall(stack_t **stack, unsigned int line_number, char *temp, char *p)
 }
 
 /**
-*is_int - Function that checks if a string comprises of numbers
-*@temp: String
-*
-*Return: True or False
+*pint - Function that prints the values at the top of the stack.
+*@stack: Stack data would be stored in
+*@line_number: Integer to be added
+*@temp: Tokenized input
+*@p: Lineptr var, sent for freeing incase of an error and the program exits
 */
-bool is_int(char *temp)
+void pint(stack_t **stack, unsigned int line_number, char *temp, char *p)
 {
-	int i = 0;
+	(void)temp;
 
-	while (temp[i])
+	if (*stack)
+		printf("%d\n", (*stack)->n);
+	else
 	{
-		if ((temp[0] == 45 || temp[0] == 43) && temp[1] != '\0' &&
-			i == 0)
-			i++;
-		if (temp[i] > 57 || temp[i] < 48)
-			return (false);
-		i++;
+		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		clean(stack, file, p);
 	}
-	return (true);
 }

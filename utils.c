@@ -29,6 +29,6 @@ bool is_int(char *temp)
 */
 void clean(stack_t **stack, FILE *file, char *p)
 {
-	fclose(file), free_stk(stack), free(p);
+	fclose(file), free_stack(stack), free(p);
 	exit(EXIT_FAILURE);
 }

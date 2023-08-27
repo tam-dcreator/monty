@@ -47,10 +47,12 @@ typedef struct instruction_s
 	function_pointer f;
 } instruction_t;
 
-function_pointer find_app_func(char *opcode, int line_no);
+function_pointer find_app_func(stack_t **, char *, int, char *);
 void pall(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void push(stack_t **stack, unsigned int line_number, char *temp, char *p);
+void pint(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void free_stack(stack_t **stack);
 bool is_int(char *temp);
+void clean(stack_t **stack, FILE *file, char *p);
 
 #endif /*MONTY_H*/

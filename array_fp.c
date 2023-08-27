@@ -3,12 +3,15 @@
 *find_app_func - Function that finds the appropriate functions from an array of
 *functions.
 *
+*@stk: Stack to be freed
 *@opcode: Key word used to check for the desired function
 *@line_no: Current line no.
+*@p: Lineptr var from getlines
 *
 *Return: The appropriate function or NULL
 */
-function_pointer find_app_func(char *opcode, int line_no)
+function_pointer find_app_func(stack_t **stk, char *opcode, int line_no,
+			       char *p)
 {
 	int i;
 
@@ -26,6 +29,6 @@ function_pointer find_app_func(char *opcode, int line_no)
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n",
 		line_no, opcode);
-	fclose(file);
-	exit(EXIT_FAILURE);
+	clean(stk, file, p);
+	return (NULL);
 }

@@ -39,7 +39,7 @@ int main(int ac, char *argv[])
 			token = strtok(lineptr, " \n");
 			if (token)
 			{
-				fp = find_app_func(token, line_no);
+				fp = find_app_func(&stk, token, line_no, lineptr);
 				if (strcmp("pall", token) != 0)
 					token = strtok(NULL, " \n");
 			/*Call the function passing the variables*/
