@@ -69,6 +69,9 @@ bool is_int(char *temp)
 
 	while (temp[i])
 	{
+		if ((temp[0] == 45 || temp[0] == 43) && temp[1] != '\0' &&
+			i == 0)
+			i++;
 		if (temp[i] > 57 || temp[i] < 48)
 			return (false);
 		i++;
