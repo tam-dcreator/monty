@@ -77,3 +77,28 @@ void pint(stack_t **stack, unsigned int line_number, char *temp, char *p)
 		clean(stack, file, p);
 	}
 }
+
+/**
+*pop - Function that removes the top element of the stack.
+*@stack: Stack data would be stored in
+*@line_number: Integer to be added
+*@temp: Tokenized input
+*@p: Lineptr var, sent for freeing incase of an error and the program exits
+*/
+void pop(stack_t **stack, unsigned int line_number, char *temp, char *p)
+{
+	stack_t *pointer = *stack;
+
+	(void)temp;
+
+	if (*stack)
+	{
+		*stack = (*stack)->prev;
+		free(pointer);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		clean(stack, file, p);
+	}
+}
