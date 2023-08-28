@@ -75,6 +75,8 @@ void rotl(stack_t **stack, unsigned int line_number, char *temp, char *p)
 	int temp_n;
 
 	(void)temp;
+	(void)p;
+	(void)line_number;
 
 	if (stk_len(stack) >= 2)
 	{
