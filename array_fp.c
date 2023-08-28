@@ -29,6 +29,7 @@ function_pointer find_app_func(stack_t **stk, char *opcode, int line_no,
 		{"mod", modulus},
 		{"pchar", pchar},
 		{"pstr", pstr},
+		{"rotl", rotl},
 		{"0", NULL},
 	};
 	/*Iterate through the array to get the desired function and return it*/
