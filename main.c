@@ -21,8 +21,7 @@ int main(int ac, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
 	file = fopen(filename, "r");
 	if (file == NULL)
-		fprintf(stderr, "Error: Can't open file %s\n", filename),
-			exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: Can't open file %s\n", filename), exit(EXIT_FAILURE);
 	/*Read lines from the open file*/
 	while ((read = getline(&lineptr, &len, file)) != flag)
 	{
@@ -31,18 +30,20 @@ int main(int ac, char *argv[])
 		if (read <= 1)
 			continue;
 		else
-		{
-			/*tokenize lineptr and find the corresponding func*/
+		{/*tokenize lineptr and find the corresponding func*/
 			token = strtok(lineptr, " \n");
-			if ((strcmp("nop", token) == 0) || token[0] == '#')
-				continue;
-			else if (token)
+			if (token)
 			{
-				fp = find_app_func(&stk, token, line_no, lineptr);
-				if (strcmp("push", token) == 0)
-					token = strtok(NULL, " \n");
+				if ((strcmp("nop", token) == 0) || token[0] == '#')
+					continue;
+				else
+				{
+					fp = find_app_func(&stk, token, line_no, lineptr);
+					if (strcmp("push", token) == 0)
+						token = strtok(NULL, " \n");
 			/*Call the function passing the variables*/
-				fp(&stk, line_no, token, lineptr);
+					fp(&stk, line_no, token, lineptr);
+				}
 			}
 		}
 	}
