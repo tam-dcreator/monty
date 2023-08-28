@@ -92,3 +92,43 @@ void rotl(stack_t **stack, unsigned int line_number, char *temp, char *p)
 		}
 	}
 }
+
+/**
+*rotr - Function that rotates the entire stack. In essence it reverses the
+*order of the stack. Top to bottom, becomes bottom to top.
+*
+*@stack: Stack data would be stored in
+*@line_number: Integer to be added
+*@temp: Tokenized input
+*@p: Lineptr var, sent for freeing incase of an error and the program exits
+*/
+void rotr(stack_t **stack, unsigned int line_number, char *temp, char *p)
+{
+	stack_t *ptr1, *ptr2;
+	int temp_n, i = 0;
+
+	(void)temp;
+	(void)p;
+	(void)line_number;
+
+	if (stk_len(stack) >= 2)
+	{
+		ptr1 = *stack;
+		ptr2 = (*stack)->prev;
+		/*Move ptr2 to the last element of the stack by checking*/
+		/*if the prev element is a null, if it isnt, move down*/
+		while (ptr2->prev)
+			ptr2 = ptr2->prev;
+
+/*Swap the top and bottom elements while the condition holds. Move the bottom*/
+/*pointer up and move the top pointer down.*/
+		while (i++ < (stk_len(stack) / 2))
+		{
+			temp_n = ptr1->n;
+			ptr1->n = ptr2->n;
+			ptr2->n = temp_n;
+			ptr1 = ptr1->prev;
+			ptr2 = ptr2->next;
+		}
+	}
+}
