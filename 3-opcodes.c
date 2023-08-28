@@ -50,10 +50,10 @@ void pstr(stack_t **stack, unsigned int line_number, char *temp, char *p)
 
 	if (pointer)
 	{
-		while (pointer)
+		while (pointer && pointer->n != 0)
 		{
 			temp_n = pointer->n;
-			if (temp_n < 127 || temp_n > 0)
+			if (temp_n < 126 || temp_n > 31)
 				printf("%c", temp_n);
 			pointer = pointer->prev;
 		}

@@ -59,6 +59,7 @@ void divide(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void mult(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void modulus(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void pchar(stack_t **stack, unsigned int line_number, char *temp, char *p);
+void pstr(stack_t **stack, unsigned int line_number, char *temp, char *p);
 void free_stack(stack_t **stack);
 bool is_int(char *temp);
 void clean(stack_t **stack, FILE *file, char *p);
