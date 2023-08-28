@@ -59,3 +59,34 @@ void pstr(stack_t **stack, unsigned int line_number, char *temp, char *p)
 	}
 	putchar('\n');
 }
+
+/**
+*rotl - Function that rotates the stack to the top. The top element becomes
+*the last one and the second top element of the stack becomes the first one.
+*
+*@stack: Stack data would be stored in
+*@line_number: Integer to be added
+*@temp: Tokenized input
+*@p: Lineptr var, sent for freeing incase of an error and the program exits
+*/
+void rotl(stack_t **stack, unsigned int line_number, char *temp, char *p)
+{
+	stack_t *ptr1, *ptr2;
+	int temp_n;
+
+	(void)temp;
+
+	if (stk_len(stack) >= 2)
+	{
+		ptr1 = *stack;
+		ptr2 = (*stack)->prev;
+		temp_n = ptr1->n;
+		while (ptr2)
+		{
+			ptr1->n = ptr2->n;
+			ptr2->n = temp_n;
+			ptr1 = ptr2;
+			ptr2 = ptr2->prev;
+		}
+	}
+}
