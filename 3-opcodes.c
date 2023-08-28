@@ -30,3 +30,33 @@ void pchar(stack_t **stack, unsigned int line_number, char *temp, char *p)
 		clean(stack, file, p);
 	}
 }
+
+/**
+*pstr - Function that prints the char of all the data in a stack as a string.
+*
+*@stack: Stack data would be stored in
+*@line_number: Integer to be added
+*@temp: Tokenized input
+*@p: Lineptr var, sent for freeing incase of an error and the program exits
+*/
+void pstr(stack_t **stack, unsigned int line_number, char *temp, char *p)
+{
+	stack_t *pointer = *stack;
+	int temp_n;
+
+	(void)temp;
+	(void)p;
+	(void)line_number;
+
+	if (pointer)
+	{
+		while (pointer)
+		{
+			temp_n = pointer->n;
+			if (temp_n < 127 || temp_n > 0)
+				printf("%c", temp_n);
+			pointer = pointer->prev;
+		}
+	}
+	putchar('\n');
+}
