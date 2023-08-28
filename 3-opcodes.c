@@ -56,10 +56,6 @@ void pstr(stack_t **stack, unsigned int line_number, char *temp, char *p)
 			printf("%c", temp_n);
 			pointer = pointer->prev;
 		}
-		putchar('\n');
 	}
-	else
-	{
-		putchar('\n');
-	}
+	putchar('\n');
 }
