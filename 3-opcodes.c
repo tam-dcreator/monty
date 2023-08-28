@@ -58,4 +58,8 @@ void pstr(stack_t **stack, unsigned int line_number, char *temp, char *p)
 		}
 		putchar('\n');
 	}
+	else
+	{
+		putchar('\n');
+	}
 }
